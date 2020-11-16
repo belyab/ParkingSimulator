@@ -1,16 +1,24 @@
 package com.company;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class ParkingLotManager {
-    public static Parking parking;
-    private static boolean isFoundEmptyPlaces;
+    Parking parking;
+    boolean isFoundEmptyPlaces;
     Random random = new Random();
-    int counterRemovedCar;
+    private int counterRemovedCar;
 
 
-    public void fillParkingLot() {
-        Car[] claimingCars = new Car[Math.abs(random.nextInt(parking.getPlaces().length)) / 2];
+
+
+    public ParkingLotManager(Parking parking1) {
+        this.parking=parking1;
+    }
+
+
+    public void fillParkingPlaces() {
+        Car[] claimingCars = new Car[Math.abs(random.nextInt(parking.getPlaces().length)) / 3];
         Car currentCar;
 
         for (int car = 0; car < claimingCars.length; car++) {
@@ -29,7 +37,8 @@ public class ParkingLotManager {
                         }
                     }
                 }
-                System.out.println("Places are full ");
+                System.out.println("Places  are full ");
+                System.out.println(" ");
             } else {
                 for (int car = 0; car < counterEmptyPlaces; car++) {
                     for (int place = 0; place < parking.getPlaces().length; place++) {
@@ -42,11 +51,12 @@ public class ParkingLotManager {
                 System.out.println("Driven" + counterEmptyPlaces + "cars.The other didn't fit");
             }
         } else {
-            System.out.println("There are no free Parking places");
+            System.out.println("There are no free Parking places ");
         }
     }
 
-    public static int countingEmptyPlaces() {
+
+    public  int countingEmptyPlaces() {
         isFoundEmptyPlaces = true;
         int counterEmptyPlaces = 0;
         for (Object car : parking.getPlaces()) {
@@ -61,6 +71,7 @@ public class ParkingLotManager {
         return counterEmptyPlaces;
     }
 
+
     public void minusMove() {
         this.counterRemovedCar = 0;
         for (Car car : parking.getPlaces()) {
@@ -69,11 +80,10 @@ public class ParkingLotManager {
                 deleteCar();
             }
         }
-        System.out.println("Released " + this.counterRemovedCar + " Parking places.");
+        System.out.println(this.counterRemovedCar +" cars left");
     }
 
     public void deleteCar() {
-        int counterRemovedCar = 0;
         for (int car = 0; car < parking.getPlaces().length; car++) {
             if (parking.getPlaces()[car] != null && parking.getPlaces()[car].getDurationMoves() == 0) {
                 parking.getPlaces()[car] = null;
@@ -81,6 +91,19 @@ public class ParkingLotManager {
             }
         }
     }
+    public int Min(){
+        int min=10;
+        for (int car=0;car <parking.getPlaces().length;car++ ) {
+            if ((parking.getPlaces()[car] != null) && (min) >= parking.getPlaces()[car].getDurationMoves()) {
+                min = parking.getPlaces()[car].getDurationMoves();
+            }
+        }
+        return min;
+    }
+    public void resetPlaces(){
+        Arrays.fill(parking.getPlaces(), null);
+    }
+
 }
 
 
