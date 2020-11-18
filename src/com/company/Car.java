@@ -3,10 +3,15 @@ package com.company;
 public class Car {
     private int uniqueNumb;
     private int durationMoves;
+    private String type;
 
-    public Car(){
-        this.uniqueNumb = 1000 + (int) (Math.random() * 9000);
+
+
+
+    public Car(String type,int uniqueNumb){
+        this.uniqueNumb=uniqueNumb;
         this.durationMoves = 1+(int)(Math.random()*10);
+        this.type=type;
     }
 
     public void setDurationMoves(int durationMoves){
@@ -16,6 +21,12 @@ public class Car {
     public int getDurationMoves(){
         return durationMoves;
     }
+
+    public String getType(){
+        return type;
+    }
+
+
 
 
 }

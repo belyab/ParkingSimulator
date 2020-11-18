@@ -3,28 +3,30 @@ package com.company;
 import java.util.Scanner;
 
 public class Parking {
-    private Car[] places;
+    private Car[] placesCar;
+    private Car[] placesTruck;
 
-    public Parking(int numbPlaces) {
-        this.places = new Car[numbPlaces];
+    public Parking(int numbPlacesCar,int numbPlacesTruck) {
+        this.placesCar = new Car[numbPlacesCar];
+        this.placesTruck=new Car[numbPlacesTruck];
 
     }
 
 
-    public Car[] getPlaces() {
-        return places;
+    public Car[] getPlacesCar() {
+        return placesCar;
+    }
+    public Car[] getPlacesTruck() {
+        return placesTruck;
     }
 
 
-    public void setPlaces(Car[] places) {
-        this.places = places;
+    public void setPlacesCar(Car[] placesCar) {
+        this.placesCar = placesCar;
     }
-
-
-
-
-
-
+    public void setPlacesTruck(Car[] placesTruck) {
+        this.placesTruck = placesTruck;
+    }
 
 
 }
