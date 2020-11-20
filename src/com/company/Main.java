@@ -7,17 +7,18 @@ import java.util.Scanner;
 
 public class Main {
     public static void  main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please,enter the size of Parking for cars");
         int parkingSizeCar = scanner.nextInt();
         System.out.println("Please,enter the size of Parking for truck");
         int parkingSizeTruck = scanner.nextInt();
-        int menu;
         boolean isWork = true;
         Parking parking=new Parking(parkingSizeCar,parkingSizeTruck);
         ParkingLotManager parkingLotManager = new ParkingLotManager(parking);
         parkingLotManager.fillParkingPlaces();
         while (isWork) {
+
             System.out.println("Please choose command");
 
             System.out.println("1: Finish the move and go to the next one");
@@ -29,14 +30,14 @@ public class Main {
             System.out.println("7: Quite");
 
             System.out.print("Enter your choice: ");
-            menu = scanner.nextInt();
+            int menu = scanner.nextInt();
             System.out.println();
 
             switch (menu) {
                 case 1 -> parkingLotManager.minusMove();
                 case 2 -> {
-                    System.out.println("Occupied place in car parking: " + (parkingLotManager.parking.getPlacesCar().length - parkingLotManager.countingEmptyPlacesCar()));
-                    System.out.println("Occupied place in truck parking: " + (parkingLotManager.parking.getPlacesTruck().length - parkingLotManager.countingEmptyPlacesTruck()));
+                    System.out.println("Occupied place in car parking: " + (parkingLotManager.parking.getPlacesCar().size() - parkingLotManager.countingEmptyPlacesCar()));
+                    System.out.println("Occupied place in truck parking: " + (parkingLotManager.parking.getPlacesTruck().size() - parkingLotManager.countingEmptyPlacesTruck()));
                 }
                 case 3 -> {
                     System.out.println("Available place in car parking : " + parkingLotManager.countingEmptyPlacesCar());

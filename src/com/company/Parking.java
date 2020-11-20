@@ -1,30 +1,36 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Parking {
-    private Car[] placesCar;
-    private Car[] placesTruck;
+    private ArrayList<Car> placesCar;
+    private ArrayList<Car> placesTruck;
+
 
     public Parking(int numbPlacesCar,int numbPlacesTruck) {
-        this.placesCar = new Car[numbPlacesCar];
-        this.placesTruck=new Car[numbPlacesTruck];
+        this.placesCar = new ArrayList<>(Collections.nCopies(numbPlacesCar, null));
+        this.placesTruck = new ArrayList<>(Collections.nCopies(numbPlacesTruck,null));
+        this.placesCar.trimToSize();
+        this.placesTruck.trimToSize();
+
 
     }
 
 
-    public Car[] getPlacesCar() {
+    public ArrayList<Car> getPlacesCar() {
         return placesCar;
     }
-    public Car[] getPlacesTruck() {
+    public ArrayList<Car> getPlacesTruck() {
         return placesTruck;
     }
 
 
-    public void setPlacesCar(Car[] placesCar) {
+    public void setPlacesCar(ArrayList<Car> placesCar) {
         this.placesCar = placesCar;
     }
-    public void setPlacesTruck(Car[] placesTruck) {
+    public void setPlacesTruck(ArrayList<Car> placesTruck) {
         this.placesTruck = placesTruck;
     }
 
